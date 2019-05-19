@@ -11,15 +11,15 @@ For the purposed of this exercise, Fall in the southern hemisphere is defined as
 
 Being a good developer, you will quickly notice that the calculateRate method is poorly written and needs to be refactored.
 
-Bonus points for
-Measuring how much you can reduce the complexity of the application. (i.e. use a metric to measure complexity)
-Showing how you progressively improve the code by tagging after each major improvement you make.
+Bonus points for measuring how much you can reduce the complexity of the application (i.e. use a metric to measure complexity)
+and for showing how you progressively improve the code (e.g. tagging after each major improvement you make).
 
 ## Getting Started
 
 Running the application: `gradle build test run`
 
 All output is written to the console.
+
 
 
 
