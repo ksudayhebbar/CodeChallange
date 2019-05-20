@@ -65,10 +65,10 @@ public class App {
 
         } else if (position == "South America") {
 
-            if (day.compareTo(naSummerStart) > 0 && day.compareTo(naSummerEnd) < 0) {
+            if (day.compareTo(saSummerStart) > 0 && day.compareTo(saSummerEnd) < 0) {
                 System.out.println("It's summer");
                 currentRate = summerRate;
-            } else if (day.compareTo(naWinterStart) > 0 && day.compareTo(naWinterEnd) < 0) {
+            } else if (day.compareTo(saWinterStart) > 0 && day.compareTo(saWinterEnd) < 0) {
                 System.out.println("It's Winter");
                 currentRate = winterRate;
             } else {
