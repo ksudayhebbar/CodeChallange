@@ -7,7 +7,7 @@ In this exercise you will add a feature to the code while improving code quality
 
 You will need to add the ability to generate a rate that should be applied in Australia during the Fall to this application.
 
-For the purposed of this exercise, Fall in the southern hemisphere is defined as the months of March, April, and May.
+For the purposes of this exercise, Fall in the southern hemisphere is defined as the months of March, April, and May.
 
 Being a good developer, you will quickly notice that the calculateRate method is poorly written and needs to be refactored.
 
