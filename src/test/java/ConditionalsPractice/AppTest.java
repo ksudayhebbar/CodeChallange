@@ -3,11 +3,66 @@
  */
 package ConditionalsPractice;
 
+import java.util.Date;
+
+import org.junit.Assert;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import condition.practice.positions.NorthAmericaPositions;
+import condition.practice.positions.PositionsFactory;
+import condition.practice.positions.SouthAmericaPositions;
+import condition.practice.rates.Rates.RateBuilder;
 
 public class AppTest {
-    @Test public void testAppHasAGreeting() {
+	@Test
+	public void testNorthAmericaPositions() {
+		NorthAmericaPositions northAmericaPositions = new NorthAmericaPositions(new Date(2019, 5, 31),
+				new Date(2019, 9, 1), new Date(2019, 12, 1), new Date(2020, 2, 28), new RateBuilder().build());
 
-    }
+		double naSummerScenario = PositionsFactory.getInstance()
+				.getPositions(NorthAmericaPositions.class.getSimpleName()).calculateRate(new Date(2019, 7, 04));
+
+		Assert.assertFalse("Summer scenario rate is: ", (naSummerScenario != 7.77));
+		double naWinterScenario = PositionsFactory.getInstance()
+				.getPositions(NorthAmericaPositions.class.getSimpleName()).calculateRate(new Date(2019, 12, 04));
+		Assert.assertFalse("Winter scenario rate is: ", (naWinterScenario != 22.22));
+
+		double regularScenario = PositionsFactory.getInstance()
+				.getPositions(NorthAmericaPositions.class.getSimpleName()).calculateRate(new Date(2019, 5, 04));
+		Assert.assertFalse("Regular Scenario scenario rate is: ", (regularScenario != 11.11));
+
+	}
+
+	@Test
+	public void testSothAmericaPositions() {
+
+		SouthAmericaPositions southAmericaPositions = new SouthAmericaPositions(new Date(2019, 12, 1),
+				new Date(2020, 2, 28), new Date(2019, 5, 31), new Date(2019, 9, 1), new RateBuilder().build());
+
+		double saSummerScenario = PositionsFactory.getInstance()
+				.getPositions(SouthAmericaPositions.class.getSimpleName()).calculateRate(new Date(2020, 1, 07));
+		Assert.assertFalse("Summer scenario rate is: ", (saSummerScenario != 7.77));
+
+		double saWinterScenario = PositionsFactory.getInstance()
+				.getPositions(SouthAmericaPositions.class.getSimpleName()).calculateRate(new Date(2019, 8, 17));
+
+		Assert.assertFalse("Winter scenario rate is: ", (saWinterScenario != 22.22));
+
+		southAmericaPositions = new SouthAmericaPositions(new Date(2019, 12, 1), new Date(2020, 2, 28),
+				new Date(2019, 5, 31), new Date(2019, 9, 1), new RateBuilder().summerRate(33.67).build());
+
+		saSummerScenario = PositionsFactory.getInstance().getPositions(SouthAmericaPositions.class.getSimpleName())
+				.calculateRate(new Date(2020, 1, 07));
+		Assert.assertFalse("Summer scenario rate is: ", (saSummerScenario != 33.67));
+
+		southAmericaPositions = new SouthAmericaPositions(new Date(2019, 12, 1), new Date(2020, 2, 28),
+				new Date(2019, 5, 31), new Date(2019, 9, 1),
+				new RateBuilder().winterRate(34.99).summerRate(33.67).build());
+
+		saWinterScenario = PositionsFactory.getInstance().getPositions(SouthAmericaPositions.class.getSimpleName())
+				.calculateRate(new Date(2019, 8, 17));
+
+		Assert.assertFalse("Winter scenario rate is: ", (saWinterScenario != 34.99));
+
+	}
 }
