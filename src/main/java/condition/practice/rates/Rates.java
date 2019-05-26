@@ -77,18 +77,18 @@ public class Rates {
 			return true;
 		}
 
-		@Override
-		public String toString() {
-			return "RateBuilder [regularRate=" + regularRate + ", summerRate=" + summerRate + ", winterRate="
-					+ winterRate + "]";
-		}
-
 		public Rates build() {
 			Rates rates = new Rates(regularRate, summerRate, winterRate);
 			return rates;
 
 		}
 
+	}
+
+	@Override
+	public String toString() {
+		return "RateBuilder [regularRate=" + regularRate + ", summerRate=" + summerRate + ", winterRate=" + winterRate
+				+ "]";
 	}
 
 }
